@@ -1,0 +1,27 @@
+.nav {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.item a {
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+  font-family: sans-serif;
+  transition: color 0.2s ease;
+}
+
+.item a:hover {
+  color: #3182ce;
+}
