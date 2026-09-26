@@ -1,32 +1,58 @@
-# React + TypeScript + Vite
+# fs2-react-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+App base con **Vite + React + TypeScript** para el ramo FS2. Incluye ruteo con **wouter**, componentes reutilizables con CSS Modules y deploy automático a **GitHub Pages**.
 
-Currently, two official plugins are available:
+- Demo: https://docentedev.github.io/fs2-react-app/
+- Rutas: `/` (Home) · `/login` · `/register`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Requisitos
 
-## React Compiler
+- Node.js 22+ · npm 10+
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Inicio rápido
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Scripts
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Servidor desarrollo con HMR |
+| `npm run build` | Chequeo TS (`tsc -b`) + build a `dist/` |
+| `npm run preview` | Previsualiza el build |
+| `npm run lint` | Linter (`oxlint`) |
+
+## Estructura
+
+```
+src/
+  main.tsx          # entry: monta <App />
+  App.tsx           # <Router> + <Menu /> + rutas
+  index.css / App.css
+  components/       # UI reutilizable: button, card, input, menu
+  pages/            # vistas: home, login, register
+public/             # favicon, icons, .nojekyll
+.github/workflows/  # deploy a Pages
+docs/               # guías del proyecto
+```
+
+- `components/`: piezas sin noción de ruta, con CSS Module al lado (`Button.tsx` + `Button.module.css`).
+- `pages/`: una carpeta por vista (`home/Home.tsx` → ruta `/`).
+- `App.tsx` solo compone layout + rutas.
+
+## Documentación
+
+En [`docs/`](./docs/README.md):
+
+1. Nuevo proyecto Vite + React + TS (crear, limpiar, dependencias)
+2. Estructura base
+3. Crear componentes
+4. Wouter (instalación y `base`)
+5. Deploy en GitHub Pages (workflow + errores comunes)
+
+## Deploy
+
+Cada push a `main` redespliega vía `.github/workflows/deploy.yml` (requiere **Settings > Pages > Source: GitHub Actions** una sola vez). Detalle en [`docs/05-github-pages.md`](./docs/05-github-pages.md).
