@@ -1,6 +1,7 @@
 {
   "name": "fs2-react-app",
   "private": false,
+  "homepage": "https://issa121212.github.io/fs2-react-app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
